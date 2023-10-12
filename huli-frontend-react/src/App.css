@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "Lato", "sans-serif";
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#logo {
+  max-height: 100px;
+  max-width: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 20px;
+  max-height: 50px;
+  align-items: center;
+  padding: 20px 100px;
+  margin: 0;
+  width: 100%;
+  max-width: 1300px;
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-elem {
+  margin-left: 1.5rem;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: large;
 }
+
+.nav-elem:hover {
+  color: #40309b;
+}
+
+/* Login page and registration page form styling*/
+.auth-form-container,
+.login-and-reg-form {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  margin: 1rem auto auto;
+}
+
+.form-container-reg-log {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 200px;
+}
+
+/*footer styling*/
+#footer {
+  margin-top: auto;
+  align-items: center;
+  min-height: 100px;
+  background-color: #40309b;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#footer p {
+  text-align: center;
+  margin-top: 150px;
+}
+.all-users {
+  padding: 10px 0px;
+  max-width: 1200px;
+  width: 100%;
+}
+/*user styling*/
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 calc(29% - 2%);
+}
+.user {
+    float: left;
+    border: 1px solid #40309b;
+    border-radius: 5px;
+    width: 29%;
+    margin: 1%;
+    padding: 1%;
+    padding-top: 1.5%;
+    padding-bottom: 0px;
+  }
+  /*product style*/
+
+  .all-products{
+    padding: 10px 0px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .products{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .products img{
+    max-width: 130px;
+  }
+  .product{
+    margin-right: 10px;
+    max-width: 130px;
+  }
+  /*product adding*/
+  .container{
+    padding: 5px 30px;
+    border-radius: 10px;
+    margin: 1%;
+    border: 1px solid #40309b;
+    max-width:50%;
+  }
+  .add-button{
+    margin-bottom: 1rem;
+  }
+  .content{
+    display:flex;
+    flex-direction: row;
+  }
+  .input-box{
+    margin-bottom: 13px;
+  }
