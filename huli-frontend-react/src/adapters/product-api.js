@@ -30,6 +30,15 @@ const api = {
       },
       body: body && JSON.stringify(body),
     }),
+    delete: (endpoint) =>
+    fetch(`${basePath}/${endpoint}`, {
+        method: 'DELETE',
+        headers: {
+            "Authorization": "Bearer " + getToken(),
+            "Access-Control-Allow-Origin": "*"
+        },
+    }), 
+
 };
 
 export { api };

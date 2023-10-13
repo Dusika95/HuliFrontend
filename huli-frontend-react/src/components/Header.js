@@ -9,30 +9,30 @@ export default function Header({ user, setUser, isAdmin, setIsAdmin }) {
     setIsAdmin(false);
   };
   
-  return <nav>
+  return <nav className="header-nav">
     <Link to="/"><img id="logo" src={PNG} alt="logo pic"/></Link>
 
     {user !== null ? (
         isAdmin ? (
           <div>
-            <Link className='nav-elem' to={"/admin/products"}>Termék kezelő</Link>
-            <Link className="nav-elem" to={"/admin/users"} >Users</Link>
+            <Link className="header-nav-elem" to={"/admin/products"}>Termék kezelő</Link>
+            <Link className="header-nav-elem" to={"/admin/users"} >Users</Link>
             
-            <Link className="nav-elem" to={"/"} onClick={logout}> Logout </Link>
+            <Link className="header-nav-elem" to={"/"} onClick={logout}> Logout </Link>
           </div>
         ) : (
           <div>
             
             
-            <Link className='nav-elem' to={"/shop"}>Áruház</Link>
-            <Link className="nav-elem" to={"/"} onClick={logout}> Logout </Link>
+            <Link className="header-nav-elem" to={"/shop"}>Áruház</Link>
+            <Link className="header-nav-elem" to={"/"} onClick={logout}> Logout </Link>
           </div>
         )
       ) : (
         <div>
-          <Link className='nav-elem' to={"/shop"}>Áruház</Link>
-          <Link className="nav-elem" to={"/register"}> Register </Link>
-          <Link className="nav-elem" to={"/login"}> Login </Link>
+          <Link className="header-nav-elem" to={"/shop"}>Áruház</Link>
+          <Link className="header-nav-elem" to={"/register"}> Register </Link>
+          <Link className="header-nav-elem" to={"/login"}> Login </Link>
         </div>
       )}  
         

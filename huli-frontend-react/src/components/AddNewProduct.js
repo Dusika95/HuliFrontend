@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+
+
+import { useGetCategory } from "../hooks/category-hooks";
 
 export default function AddNewProduct({refresh,addNewProduct, isLoading}){
 
@@ -32,6 +35,16 @@ export default function AddNewProduct({refresh,addNewProduct, isLoading}){
         refresh();
     };
 
+    const { categories, getCategories, isLoadingCategory: isFetchingCategories} = useGetCategory();
+
+    useEffect(() => {
+      getCategories();
+    }, []);
+  
+    const isLoadingCategory = isFetchingCategories;
+
+
+
     return (
         <div className="container">
             <h2 className="title">Create product</h2>
@@ -52,7 +65,14 @@ export default function AddNewProduct({refresh,addNewProduct, isLoading}){
                         </div>
                         <div className="input-box">
                             <span className='details'>Category</span>
-                            <input type="text" placeholder='exist category' required name="category" value={productData.category} onChange={handleChange}/>
+                                <select name="category" value={productData.category} onChange={handleChange}>
+                                    <option value="">Select a category</option>
+                                    {categories.map((category) => (
+                                        <option key={category.id} value={category.name}>
+                                            {category.name}
+                                        </option>
+                                            ))}
+                                </select>
                         </div>
                         <div className="input-box">
                             <span className='details'>Price</span>

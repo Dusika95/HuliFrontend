@@ -19,7 +19,7 @@ body,
   max-width: 100px;
 }
 
-nav {
+.header-nav {
   display: flex;
   justify-content: space-between;
   margin: 5px 20px;
@@ -32,7 +32,7 @@ nav {
   flex-grow: 1;
 }
 
-.nav-elem {
+.header-nav-elem {
   margin-left: 1.5rem;
   padding: 10px;
   color: black;
@@ -42,7 +42,7 @@ nav {
   font-size: large;
 }
 
-.nav-elem:hover {
+.header-nav-elem:hover {
   color: #40309b;
 }
 
