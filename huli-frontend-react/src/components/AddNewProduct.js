@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 import { useGetCategory } from "../hooks/category-hooks";
 
 export default function AddNewProduct({refresh,addNewProduct, isLoading}){
@@ -83,14 +82,7 @@ export default function AddNewProduct({refresh,addNewProduct, isLoading}){
                             <input type="number" placeholder='10' required name="quantity" value={productData.quantity} onChange={handleChange}/>
                         </div>
                     </div>
-                    <button
-            type="submit"
-            disabled={isLoading}
-            className={`${isLoading && "opacity-80"}`}
-            id='add-product'
-          >
-            Add Product
-          </button>
+                    <button type="submit" disabled={isLoading} className={`${isLoading && "opacity-80"}`} id='add-product'>Add Product</button>
                 </form>
             </div>
         </div>

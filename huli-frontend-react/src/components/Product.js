@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import NoImage from "../missing.png"
 
 export default function Product({product, onDelete, isAdmin}){
-
+    
     return(
     <div className="product">
         {isAdmin && (
@@ -13,5 +13,6 @@ export default function Product({product, onDelete, isAdmin}){
         </div>
         <h3>{product.name}</h3>  
         <p>{product.price} Ft</p>
+        <Link to={`/product/${product.id}`}>Show product data</Link><br />
     </div>)
 }

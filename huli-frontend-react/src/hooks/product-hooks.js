@@ -50,3 +50,98 @@ export const useDeleteProduct = () => {
   return { deletedProduct, deleteProduct, isLoading };
 };
 
+export const useGetProductById = (productId) => {
+  const [isLoading,setIsLoading] = useState(false);
+  const [product,setProduct] = useState(undefined);
+
+ 
+  useEffect(() => {
+    setIsLoading(true);
+    productService.getProductById(productId).then((product) => {
+      setProduct(product);
+      setIsLoading(false);
+    })
+  }, [productId]);
+
+  return{product,isLoading};
+}
+
+export const useEditProduct = () => {
+  const[isLoading,setIsLoading] = useState(false);
+  const[editedProduct,setEditedProduct] =useState(undefined);
+
+  const editProduct= (product) => {
+    setIsLoading(true);
+    productService.editProduct(product).then((product)=>{
+      setEditedProduct(product);
+      setIsLoading(false);
+    })
+  }
+  return {editedProduct, editProduct, isLoading}
+}
+//That is waht relevant now below
+export const useGetProductsByCategory = (categoryId) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const getProductsByCategory = (categoryId) => {
+    setIsLoading(true);
+    console.log("Fetching products for categoryId:", categoryId); // For debugging
+    productService.getProductsByCategory(categoryId)
+      .then((products) => {
+        console.log("Received products:", products); // For debugging
+        setProducts(products);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setIsLoading(false);
+      });
+  };
+
+  const refreshProducts = () => {
+    setRefresh(!refresh);
+  };
+
+  useEffect(() => {
+    getProductsByCategory(categoryId);
+  }, [categoryId, refresh]);
+
+  return { products, refreshProducts, isLoading };
+};
+
+
+
+
+
+
+
+
+
+    /*useEffect(()=>{
+    setIsLoading(true);
+    productService.getProductsByCategory(categoryId).then((products) => {
+      setProducts()
+    })
+  })*/
+/*  const getProducts = () => {
+    setIsLoading(true);
+    productService.getProducts().then((products) => {
+      setProducts(products);
+      setIsLoading(false);
+    });
+  };
+
+  const refreshProducts = () => {
+    console.log("refresh");
+    setRefresh(!refresh);
+  };
+
+  return { products, getProducts, refreshProducts, isLoading };*/
+
+
+
+
+
+

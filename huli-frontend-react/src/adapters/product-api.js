@@ -38,7 +38,17 @@ const api = {
             "Access-Control-Allow-Origin": "*"
         },
     }), 
-
+    put: (endpoint, body) =>
+    fetch(`${basePath}/${endpoint}`, {
+        method: 'PUT',
+        headers: {
+            "Authorization": "Bearer " + getToken(),
+            'Content-type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: body && JSON.stringify(body)
+    }),
 };
+
 
 export { api };

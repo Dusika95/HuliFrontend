@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGetProducts } from "../hooks/product-hooks";
+import {useGetCategory} from "../hooks/category-hooks"
 import Product from "./Product";
 
 export default function Shop() {

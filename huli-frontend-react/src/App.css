@@ -144,3 +144,12 @@ body,
   .input-box{
     margin-bottom: 13px;
   }
+  /*product detail page*/
+  .product-detail{
+    display: flex;
+    justify-content:flex-start;
+  }
+  .product-detail img{
+    max-height: 300px;
+    margin-right: 2rem;
+  }

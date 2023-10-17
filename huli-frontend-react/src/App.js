@@ -11,10 +11,11 @@ import ProtectedRoute from './security/ProtectedRouter';
 import Footer from "./components/Footer"
 import Shop from "./components/Shop"
 import AdminProductManager from './components/AdminProductManager';
+import ProductDetail from './components/ProductDetail';
+import ProductByCategory from './components/ProductsByCategory';
+
+
 import { useState, useEffect } from 'react';
-
-
-
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
     }
 
   });
+  // <Route path="/shop" element={<Shop />} />
   return (
     <Router>
       <Header user={user}
@@ -46,8 +48,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NoPage />} />
         <Route path="/not-authorized" element={<NotAuthorized user={user} isAdmin={isAdmin} />} />
+        <Route path="/product/:productId" element={<ProductDetail isAdmin={isAdmin}/>} />
         <Route path="/shop" element={<Shop />} />
-      
+        <Route path="/product-by-category/:categoryId" element={<ProductByCategory />} />
+        
         {/* Protected routes */}
         <Route path="/admin/users" element={<ProtectedRoute user={user} roles={['admin']}><AllUser user={user}/></ProtectedRoute>} />
         <Route path="/admin/products" element={<ProtectedRoute user={user} roles={['admin']}><AdminProductManager user={user}/></ProtectedRoute>} />
