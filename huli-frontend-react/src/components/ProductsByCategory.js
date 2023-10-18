@@ -5,10 +5,11 @@ import Product from "./Product";
 
 export default function ProductByCategory() {
   const { categoryId } = useParams();
-  
+
   console.log("Fetching products for categoryId:", categoryId);
-  const { products, getProductsByCategory, isLoading } = useGetProductsByCategory(categoryId);
-  
+  const { products, getProductsByCategory, isLoading } =
+    useGetProductsByCategory(categoryId);
+
   console.log("Received products:", products); // Add this line for debugging
 
   useEffect(() => {
@@ -34,4 +35,3 @@ export default function ProductByCategory() {
     </div>
   );
 }
-

@@ -153,3 +153,7 @@ body,
     max-height: 300px;
     margin-right: 2rem;
   }
+  .home{
+    display: flex;
+    
+  }

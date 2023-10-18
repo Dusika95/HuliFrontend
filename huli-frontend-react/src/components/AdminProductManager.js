@@ -4,12 +4,11 @@ import AddNewProduct from "./AddNewProduct";
 import Product from "./Product"
 
 export default function AdminProductManager() {
-    const {products, getProducts, refreshProducts, isLoading: isFetchingProducts} =useGetProducts();
+    const {products, getProducts, refreshProducts, isLoading: isFetchingProducts} = useGetProducts();
     const {addedProduct, addNewProduct, isLoading: isAddingNewProduct}=useAddNewProduct();
+     const { deletedProduct, deleteProduct, isLoading: isDeletingProduct } = useDeleteProduct();
 
-    const { deletedProduct, deleteProduct, isLoading: isDeletingProduct } = useDeleteProduct();
     const [showAddProduct,setShowAddProduct] = useState(false)
-
     const [selectedProduct,setSelectedProduct] = useState(undefined)
 
     useEffect(()=>{
@@ -42,7 +41,7 @@ export default function AdminProductManager() {
             ) : (
                 <div className="products">
                     {products.map((product) => (
-                        <Product key={product.id} product={product} onDelete={deleteProduct} isAdmin={true} /*onEdit={() => openEditBuilding(building)} */ />
+                        <Product key={product.id} product={product} onDelete={deleteProduct} isAdmin={true} />
                     ))}
                 </div>
 

@@ -2,24 +2,31 @@ import { useEffect, useState } from "react";
 import * as productService from "../services/product-service";
 
 export const useGetProducts = () => {
+
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
-  const getProducts = () => {
+  function getProducts() {
     setIsLoading(true);
-    productService.getProducts().then((products) => {
-      setProducts(products);
-      setIsLoading(false);
-    });
-  };
+    productService
+      .getProducts()
+      .then((products) => {
+        setProducts(products);
+      })
+      .finally(() => setIsLoading(false));
+  }
 
-  const refreshProducts = () => {
+  function refreshProducts() {
     console.log("refresh");
     setRefresh(!refresh);
-  };
+  }
 
-  return { products, getProducts, refreshProducts, isLoading };
+  useEffect(() => {
+    getProducts();
+  }, [refresh]);
+
+  return { getProducts,products, refreshProducts, isLoading };
 };
 
 export const useAddNewProduct = () => {
@@ -51,34 +58,33 @@ export const useDeleteProduct = () => {
 };
 
 export const useGetProductById = (productId) => {
-  const [isLoading,setIsLoading] = useState(false);
-  const [product,setProduct] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
+  const [product, setProduct] = useState(undefined);
 
- 
   useEffect(() => {
     setIsLoading(true);
     productService.getProductById(productId).then((product) => {
       setProduct(product);
       setIsLoading(false);
-    })
+    });
   }, [productId]);
 
-  return{product,isLoading};
-}
+  return { product, isLoading };
+};
 
 export const useEditProduct = () => {
-  const[isLoading,setIsLoading] = useState(false);
-  const[editedProduct,setEditedProduct] =useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
+  const [editedProduct, setEditedProduct] = useState(undefined);
 
-  const editProduct= (product) => {
+  const editProduct = (product) => {
     setIsLoading(true);
-    productService.editProduct(product).then((product)=>{
+    productService.editProduct(product).then((product) => {
       setEditedProduct(product);
       setIsLoading(false);
-    })
-  }
-  return {editedProduct, editProduct, isLoading}
-}
+    });
+  };
+  return { editedProduct, editProduct, isLoading };
+};
 //That is waht relevant now below
 export const useGetProductsByCategory = (categoryId) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -87,15 +93,12 @@ export const useGetProductsByCategory = (categoryId) => {
 
   const getProductsByCategory = (categoryId) => {
     setIsLoading(true);
-    console.log("Fetching products for categoryId:", categoryId); // For debugging
     productService.getProductsByCategory(categoryId)
       .then((products) => {
-        console.log("Received products:", products); // For debugging
         setProducts(products);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
+      .catch(() => {
         setIsLoading(false);
       });
   };
@@ -108,18 +111,10 @@ export const useGetProductsByCategory = (categoryId) => {
     getProductsByCategory(categoryId);
   }, [categoryId, refresh]);
 
-  return { products, refreshProducts, isLoading };
+  return { products, refreshProducts, getProductsByCategory, isLoading };
 };
 
-
-
-
-
-
-
-
-
-    /*useEffect(()=>{
+/*useEffect(()=>{
     setIsLoading(true);
     productService.getProductsByCategory(categoryId).then((products) => {
       setProducts()
@@ -139,9 +134,3 @@ export const useGetProductsByCategory = (categoryId) => {
   };
 
   return { products, getProducts, refreshProducts, isLoading };*/
-
-
-
-
-
-

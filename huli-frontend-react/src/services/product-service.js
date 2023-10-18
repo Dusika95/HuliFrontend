@@ -12,19 +12,12 @@ export const deleteProduct = (productId) => api.delete(`api/products/admin/${pro
 
 //export const editProduct = (product) => api.put(`api/products/admin/${product.id}`, product).then((res)=> res.json())
 
-export const editProduct = (product) => {
-    return api.put(`api/products/admin/${product.id}`, product)
-    .then((res) => {
-      if (!res.ok) {
-        return res.json().then(errorData => {
-          console.error(`Failed to update the product: HTTP status ${res.status}`, errorData);
-          throw new Error(`Failed to update the product: HTTP status ${res.status}`);
-        });
-      }
-      return res.json();
-    })
-    .catch((error) => {
-      console.error("Error updating product:", error);
-      throw error; // Rethrow the error to handle it in your component
-    });
-  };
+export async function editProduct(product) {
+  var res = await api.put(`api/products/admin/${product.id}`, product);
+  if(!res.ok) {
+    var error = await res.json();
+    throw new Error(`Bad Request: ${error}`);
+  }
+
+  return res.json();
+}

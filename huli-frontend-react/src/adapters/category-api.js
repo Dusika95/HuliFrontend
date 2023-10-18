@@ -13,4 +13,14 @@ function getToken() {
           "Access-Control-Allow-Origin": "*",
         },
       }),
+    post:(endpoint, body) =>
+    fetch(`${basePath}/${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + getToken(),
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: body && JSON.stringify(body),
+    })
     }

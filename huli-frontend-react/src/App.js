@@ -13,7 +13,7 @@ import Shop from "./components/Shop"
 import AdminProductManager from './components/AdminProductManager';
 import ProductDetail from './components/ProductDetail';
 import ProductByCategory from './components/ProductsByCategory';
-
+import AdminCategoryManager from './components/AdminCategoryManager';
 
 import { useState, useEffect } from 'react';
 
@@ -55,7 +55,7 @@ function App() {
         {/* Protected routes */}
         <Route path="/admin/users" element={<ProtectedRoute user={user} roles={['admin']}><AllUser user={user}/></ProtectedRoute>} />
         <Route path="/admin/products" element={<ProtectedRoute user={user} roles={['admin']}><AdminProductManager user={user}/></ProtectedRoute>} />
-        
+        <Route path="/admin/category" element={<ProtectedRoute user={user} roles={['admin']}><AdminCategoryManager user={user}/></ProtectedRoute>} />
       </Routes>
       <Footer />
     </Router>

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useGetProducts } from "../hooks/product-hooks";
-import {useGetCategory} from "../hooks/category-hooks"
 import Product from "./Product";
 
 export default function Shop() {
-  const { products, getProducts, isLoading: isFetchingProducts} = useGetProducts();
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const isLoading = isFetchingProducts;
+  const { products, isLoading, refreshProducts } = useGetProducts();
 
   return (
     <div className="all-products">
-      <h2>Áruház</h2>
+      <h2>
+        Áruház <button onClick={() => refreshProducts()}>refresh</button>
+      </h2>
+
+      {isLoading ? <>Loading...</> : <ProductList products={products} />}
+    </div>
+  );
+}
+
+function ProductList({ products }) {
+  return (
+    <>
       {products.length === 0 ? (
         <div className="form-container">
           <p className="message">No products yet.</p>
@@ -22,10 +26,10 @@ export default function Shop() {
       ) : (
         <div className="products">
           {products.map((product) => (
-            <Product key={product.id} product={product} isAdmin={false}/> 
+            <Product key={product.id} product={product} isAdmin={false} />
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

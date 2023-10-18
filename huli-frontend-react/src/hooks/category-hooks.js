@@ -21,3 +21,16 @@ export const useGetCategory = () => {
     
     return { categories, getCategories, refreshCategories, isLoading };
 };
+
+export const useAddNewCategory = (category) => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [addedCategory, setAddedCategory] = useState(undefined)
+
+    function addNewCategory(category){
+        setIsLoading(true)
+        categoryService.addNewCategory(category).then((category) => {
+            setAddedCategory(category);
+        })
+    }
+    return {addedCategory, addNewCategory, isLoading}
+}

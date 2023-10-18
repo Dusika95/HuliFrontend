@@ -28,7 +28,7 @@ export default function EditProduct({ product, refresh, editProduct, isLoading }
       } else {
         setProductData(initialProductData);
       }
-    }, [product]);
+    }, [product,editProduct]);
   
     const handleChange = (e) => {
       const fieldName = e.target.name;
@@ -105,6 +105,9 @@ export default function EditProduct({ product, refresh, editProduct, isLoading }
             >
               Save Changes
             </button>
+            <button type="button" onClick={refresh}>
+            Close
+          </button>
           </form>
         </div>
       </div>

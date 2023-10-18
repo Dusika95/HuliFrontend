@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useGetCategory } from "../hooks/category-hooks";
 
-export default function AddNewProduct({refresh,addNewProduct, isLoading}){
+export default function AddNewProduct({refresh, addNewProduct, isLoading}){
 
     const initialProductState={
     name:"",
