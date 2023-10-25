@@ -10,19 +10,22 @@ export const useGetCategory = () => {
         setIsLoading(true);
         categoryService.getCategories().then((categories) => {
             setCategories(categories);
-            setIsLoading(false);
-        });
+            
+        }).finally(()=>setIsLoading(false));
     };
 
     const refreshCategories = () => {
         console.log('refresh');
         setRefresh(!refresh);
     };
+    useEffect(()=> {
+        getCategories();
+    },[refresh])
     
     return { categories, getCategories, refreshCategories, isLoading };
 };
 
-export const useAddNewCategory = (category) => {
+export const useAddNewCategory = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [addedCategory, setAddedCategory] = useState(undefined)
 
@@ -34,3 +37,17 @@ export const useAddNewCategory = (category) => {
     }
     return {addedCategory, addNewCategory, isLoading}
 }
+
+export const useDeleteCategory = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [deletedCategory, setDeletedCategory] = useState(undefined);
+  
+    const deleteCategory = (category) => {
+      setIsLoading(true);
+      categoryService.deleteCategory(category.id).then((category) => {
+        setDeletedCategory(category);
+        setIsLoading(false);
+      });
+    };
+    return { deletedCategory, deleteCategory, isLoading };
+  };

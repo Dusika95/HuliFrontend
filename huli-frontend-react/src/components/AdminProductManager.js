@@ -6,7 +6,7 @@ import Product from "./Product"
 export default function AdminProductManager() {
     const {products, getProducts, refreshProducts, isLoading: isFetchingProducts} = useGetProducts();
     const {addedProduct, addNewProduct, isLoading: isAddingNewProduct}=useAddNewProduct();
-     const { deletedProduct, deleteProduct, isLoading: isDeletingProduct } = useDeleteProduct();
+    const { deletedProduct, deleteProduct, isLoading: isDeletingProduct } = useDeleteProduct();
 
     const [showAddProduct,setShowAddProduct] = useState(false)
     const [selectedProduct,setSelectedProduct] = useState(undefined)

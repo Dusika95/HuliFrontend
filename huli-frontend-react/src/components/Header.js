@@ -17,7 +17,7 @@ export default function Header({ user, setUser, isAdmin, setIsAdmin }) {
           <div>
             <Link className="header-nav-elem" to={"/admin/products"}>Termék kezelő</Link>
             <Link className="header-nav-elem" to={"/admin/users"} >Users</Link>
-            
+            <Link className="header-nav-elem" to={"admin/category"} >kategória kezelő</Link>
             <Link className="header-nav-elem" to={"/"} onClick={logout}> Logout </Link>
           </div>
         ) : (

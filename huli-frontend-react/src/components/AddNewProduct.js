@@ -13,7 +13,7 @@ export default function AddNewProduct({refresh, addNewProduct, isLoading}){
     quantity:0
     };
 
-    const [productData, setProductData]= useState(initialProductState);
+    const [productData, setProductData] = useState(initialProductState);
 
     const handleChange = (e) => {
         let fieldName = e.target.name;
